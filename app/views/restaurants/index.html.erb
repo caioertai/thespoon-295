@@ -1,0 +1,32 @@
+<h2>Restaurants List</h2>
+
+<form action="/restaurants" method="post">
+  <h3>New Restaurant</h3>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" name="name" placeholder="Name">
+  <input type="text" name="address" placeholder="Address">
+  <input type="submit">
+</form>
+<br>
+<hr>
+<br>
+
+<%# 1. Dishoon %>
+<%# 2. Sushi Samba %>
+<%  %> <%# For ruby code in general %>
+<%=  %> <%# For ruby code when printing %>
+<form action="/restaurants" method="get">
+  <input type="text" name="food_type" placeholder="What kind of food?">
+  <input type="submit">
+</form>
+
+<ul>
+  <% @restaurants.each do |id, restaurant| %>
+    <li>
+      <strong><%= id %>.</strong>
+      <%= restaurant[:name] %>
+      <%= link_to 'more info', restaurant_path(id) %>
+      (<%= restaurant[:category] %>)
+    </li>
+  <% end %>
+</ul>
